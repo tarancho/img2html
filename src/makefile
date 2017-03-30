@@ -2,7 +2,8 @@
 #
 
 CFLAGS = -g -Wall -W -Wformat=2 -Wcast-qual -Wcast-align -Wwrite-strings \
-	-Wconversion -Wfloat-equal -Wpointer-arith 
+	-Wconversion -Wfloat-equal -Wpointer-arith \
+	--input-charset=utf-8
 
 OBJS = main.o base64.o
 
