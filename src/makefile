@@ -9,10 +9,14 @@
 #      make CC=/usr/bin/i686-pc-mingw32-gcc.exe
 #
 # また、Windows だと実行時に文字化けするので、cp982を有効にしてbuildし
-# て下さい(cygwindのConsoleを utf-8 で実行する方法もありますが…)。
+# て下さい(cygwindのConsoleを utf-8 で実行する方法もありますが…)。纏め
+# ると
+#
+#      make CC=/usr/bin/i686-pc-mingw32-gcc.exe EXEC_CHARSET=cp932
+#
+# といった感じで。
 
 EXEC_CHARSET=utf-8
-# EXEC_CHARSET=cp932
 
 CFLAGS = -g -Wall -W -Wformat=2 -Wcast-qual -Wcast-align -Wwrite-strings \
 	-Wconversion -Wfloat-equal -Wpointer-arith \
