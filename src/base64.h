@@ -1,6 +1,6 @@
 /* -*- mode: c++; coding: sjis; -*-
  * Copyright (C) 2005 Tadamegu Furukawa
- * $Id: base64.h,v 1.1 2005/08/03 01:33:47 tfuruka1 Exp $
+ * $Id$
  * $Name:  $
  *
  * Base64関連

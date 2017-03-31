@@ -13,7 +13,7 @@
 #include "base64.h"
 
 #define VERSION "1.00"
-#define BUILD "(internal: $Rev$ Build: "  __DATE__ " " __TIME__ ")"
+#define BUILD "(Build: " __DATE__ " " __TIME__ ")"
 
 typedef struct {
     const char *lpszMimeType;
