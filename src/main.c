@@ -1,7 +1,12 @@
-/*
+/* 
+ * Copyright (C) 2017 T.Furukawa
  * $Id$
  *
- * オプションスイッチは以下に準拠したつもりです。
+ * 久々にコード書いた。スクリプトで書いた方が簡単なんだけど。
+ *
+ * オプションスイッチは以下に準拠したつもりです。っていうか、オプション
+ * 無いし。
+
  * http://www.gnu.org/prep/standards/html_node/Option-Table.html
  */
 

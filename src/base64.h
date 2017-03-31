@@ -1,15 +1,8 @@
-/* -*- mode: c++; coding: sjis; -*-
+/* 
  * Copyright (C) 2005 Tadamegu Furukawa
  * $Id$
- * $Name:  $
  *
- * Base64�֘A
- *
- * $Log: base64.h,v $
- * Revision 1.1  2005/08/03 01:33:47  tfuruka1
- * Face�Ή��̑O�����Ƃ���Base64�̃f�R�[�h��ImagiMagic��convert.exe���w��
- * �ł���悤�ɑΉ��B
- *
+ * Base64関連
  */
 #ifndef _BASE64_H_
 #define _BASE64_H_
@@ -18,37 +11,37 @@
 #include <string.h>
 
 /*
- * Base64�ɃG���R�[�h���܂��B�G���R�[�h���ʊi�[��́A���f�[�^�� 4/3 �{
- * �̃G���A���K�v�ɂȂ�܂�(3�o�C�g��4�o�C�g�ɂȂ�܂�)�B�G���R�[�h��
- * �̃f�[�^���͕K����4�̔{���ɂȂ�܂��B�܂��A�Ō��null�X�g�b�v��t�^
- * ���܂��̂ŁA����Ɉ�o�C�g�]���ɕK�v�ɂȂ�܂��B
+ * Base64にエンコードします。エンコード結果格納域は、元データの 4/3 倍
+ * のエリアが必要になります(3バイトが4バイトになります)。エンコード後
+ * のデータ長は必ずの4の倍数になります。また、最後にnullストップを付与
+ * しますので、さらに一バイト余分に必要になります。
  */
 char *
 EncodeBase64(
-    unsigned char *lpData,                   // �G���R�[�h�f�[�^
-    size_t cbData,                           // �o�C�g��
-    char *lpszEncode                         // �G���R�[�h����(������)
+    unsigned char *lpData,                   // エンコードデータ
+    size_t cbData,                           // バイト数
+    char *lpszEncode                         // エンコード結果(文字列)
     );
 
 /*
- * Base64�Ńf�R�[�h���܂��B�f�R�[�h����錳�̕����񒷂͕K��4�̔{���ł�
- * ��K�v������܂��B�f�R�[�h��̃o�C�g����ԋp���܂��B�f�R�[�h�O�̃G
- * ���A�ƃf�R�[�h��̃G���A�͓����A�h���X���w�肷�鎖���\�ł��B
+ * Base64でデコードします。デコードされる元の文字列長は必ず4の倍数であ
+ * る必要があります。デコード後のバイト数を返却します。デコード前のエ
+ * リアとデコード後のエリアは同じアドレスを指定する事が可能です。
  */
 long
 DecodeBase64(
-    char *lpszData,                             // �K��4�̔{���ł��鎖
-    unsigned char *lpData                       // �f�R�[�h����
+    char *lpszData,                             // 必ず4の倍数である事
+    unsigned char *lpData                       // デコード結果
     );
 
 /*
- * Base64�ŃG���R�[�h���ꂽ�t�@�C�����f�R�[�h���A�t�@�C���ɏo�͂��܂��B
- * ���̓t�@�C���Əo�̓t�@�C���𓯂��ɂ��鎖�͂ł��܂���B
+ * Base64でエンコードされたファイルをデコードし、ファイルに出力します。
+ * 入力ファイルと出力ファイルを同じにする事はできません。
  */
 long
 DecodeBase64File(
-    char *lpszBase64FileName,                   // ���̓t�@�C����
-    char *lpszOutFileName                       // �o�̓t�@�C����
+    char *lpszBase64FileName,                   // 入力ファイル名
+    char *lpszOutFileName                       // 出力ファイル名
     );
 
 #endif
