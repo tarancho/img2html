@@ -4,17 +4,16 @@
 #
 # img2html の makefile です。
 #
-# WindowsでBuildする場合は、mingwを使用して下さい。以下に例を示します。
+# WindowsでBuildする場合は、mingwを使用して下さい。また、Windows だと実
+# 行時に文字化けするので、cp982を有効にしてbuildして下さい(cygwindの
+# Consoleを utf-8 で実行する方法もありますが…)。linuxでクロスコンパイ
+# ルする場合は、実行ファイルに拡張子が付与されませんので、EXE環境変数も
+# 指定した方が良いでしょう。纏めると
 #
-#      make CC=/usr/bin/i686-pc-mingw32-gcc.exe
+#      make CC=i586-mingw32msvc-gcc EXEC_CHARSET=cp932 EXE=img2html.exe
 #
-# また、Windows だと実行時に文字化けするので、cp982を有効にしてbuildし
-# て下さい(cygwindのConsoleを utf-8 で実行する方法もありますが…)。纏め
-# ると
-#
-#      make CC=/usr/bin/i686-pc-mingw32-gcc.exe EXEC_CHARSET=cp932
-#
-# といった感じで。
+# といった感じで。mingwのパスは環境によって異なると思いますので、適宜修
+# 正してください。
 
 EXEC_CHARSET=utf-8
 
