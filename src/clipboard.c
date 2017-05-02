@@ -9,6 +9,22 @@
 #include <windows.h>
 #include <stdio.h>
 #include <sys/stat.h>
+#include <io.h>
+
+/*
+ * ファイル名は一時的なバッファです。
+ */
+char *
+makeTempFile()
+{
+    static char template[] = "TAGXXXXXX";
+
+    strcpy(template, "TAGXXXXXX");
+
+    _mktemp(template);
+
+    return template;
+}
 
 BOOL
 SetClipbordFromFile(char *lpFilename)
@@ -56,17 +72,34 @@ SetClipbordFromFile(char *lpFilename)
     CloseClipboard();
     // Windows によって管理されるのでメモリの解放は不要
 
-    return TRUE;                                
+    return TRUE;
 }
 
 #else
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*
+ * ファイル名は一時的なバッファです。
+ */
+char *
+makeTempFile()
+{
+    static char template[] = "TAGXXXXXX";
+
+    strcpy(template, "TAGXXXXXX");
+
+    mkstemp(template);
+
+    return template;
+}
 
 int
 SetClipbordFromFile(char *lpFilename)
 {
-    printf("未サポートです。\n");
+    printf("未サポートです。(%s)\n", lpFilename);
     return 0;
 }
 #endif //WIN

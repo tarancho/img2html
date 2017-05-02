@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2017 T.Furukawa
  * $Id$
  *
@@ -15,7 +15,6 @@
 #include <string.h>
 #include <errno.h>
 #include <getopt.h>
-#include <io.h>
 #include <unistd.h>
 
 #include "base64.h"
@@ -35,6 +34,9 @@ typedef struct {
 
 int
 SetClipbordFromFile(char *lpFinename);
+
+char *
+makeTempFile();
 
 static void
 help()
@@ -140,7 +142,6 @@ main(int argc, char *argv[])
     int i;
     int bClip = FALSE;
     char *tmpfile;
-    char template[] = "TAGXXXXXX";
     FILE *fp = stdout;
 
     while (1) {
@@ -175,8 +176,7 @@ main(int argc, char *argv[])
     }
 
     if (bClip) {
-        tmpfile = template;
-        mkstemp(template);
+        tmpfile = makeTempFile();
         if ('\0' == *tmpfile) {
             perror("mktemp");
             return 1;
