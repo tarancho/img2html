@@ -13,24 +13,29 @@
 # といった感じで。mingwのパスは環境によって異なると思いますので、適宜修
 # 正してください。
 
+WINDOWS=0
 EXEC_CHARSET=utf-8
 
 CFLAGS = -g -Wall -W -Wformat=2 -Wcast-qual -Wcast-align -Wwrite-strings \
 	-Wconversion -Wfloat-equal -Wpointer-arith \
+	-DWINDOWS=$(WINDOWS) \
 	--input-charset=utf-8 \
 	--exec-charset=$(EXEC_CHARSET)
 
-OBJS = main.o base64.o
+OBJS = main.o base64.o clipboard.o
 
 EXE = img2html
 
 ifdef WIN
 	EXE = img2html.exe
 	EXEC_CHARSET=cp932
+    WINDOWS=$(WIN)
 endif
 
 $(EXE) : $(OBJS)
 	$(CC) -o $@ $(OBJS)
+
+$(OBJS) : makefile
 
 etags :
 	etags *.[ch]
