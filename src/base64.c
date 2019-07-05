@@ -1,6 +1,6 @@
 /*
  * Copyright(C) 2005 T.Furukawa
- * $Id: base64.c,v 1.1 2005/08/03 01:33:47 tfuruka1 Exp $
+ * $Id$
  *
  * Base64関連
  *
